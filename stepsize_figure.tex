@@ -1,0 +1,159 @@
+\begin{figure*}[h!]
+\centering
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymode=log,
+ymax=0.1,
+ymin=0.001,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic1003}; \label{syn1003_CPU9}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic1003}; \label{syn1003_Q29}
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic1003}; \label{syn1003_CPU12}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic1003}; \label{syn1003_Q212}
+\addplot [color=black, dotted, line width=1pt] table [x index=0, y index=5] {Data/new_synthetic1003}; \label{syn1003_CPU15}
+\addplot [color=red, dotted, line width=1pt] table [x index=0, y index=6] {Data/new_synthetic1003}; \label{syn1003_Q215}
+
+\node [
+fill=white,
+font=\scriptsize,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{syn1003_CPU9} \textit{float}, $\gamma=1/2^9$, \ref{syn1003_Q29} \textit{Q2}, $\gamma=1/2^9$\\
+\ref{syn1003_CPU12} \textit{float}, $\gamma=1/2^{12}$, \ref{syn1003_Q212} \textit{Q2}, $\gamma=1/2^{12}$\\
+\ref{syn1003_CPU12} \textit{float}, $\gamma=1/2^{15}$, \ref{syn1003_Q212} \textit{Q2}, $\gamma=1/2^{15}$
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{synthetic100}.}
+\label{figure:syn1003}
+\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymode=log,
+ymax=10,
+ymin=0.0001,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic10003}; \label{syn10003_CPU9}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic10003}; \label{syn10003_Q29}
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic10003}; \label{syn10003_CPU12}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic10003}; \label{syn10003_Q212}
+\addplot [color=black, dotted, line width=1pt] table [x index=0, y index=5] {Data/new_synthetic10003}; \label{syn10003_CPU15}
+\addplot [color=red, dotted, line width=1pt] table [x index=0, y index=6] {Data/new_synthetic10003}; \label{syn10003_Q215}
+\node [
+fill=white,
+font=\tiny,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{syn10003_CPU9} \textit{float}, $\gamma=1/2^9$, \ref{syn10003_Q29} \textit{Q2}, $\gamma=1/2^9$\\
+\ref{syn10003_CPU12} \textit{float}, $\gamma=1/2^{12}$, \ref{syn10003_Q212} \textit{Q2}, $\gamma=1/2^{12}$\\
+\ref{syn10003_CPU12} \textit{float}, $\gamma=1/2^{15}$, \ref{syn10003_Q212} \textit{Q2}, $\gamma=1/2^{15}$
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{synthetic1000}.}
+\label{figure:syn10003}
+\end{subfigure}
+%\begin{subfigure}[t]{.66\columnwidth}
+%\centering
+%\resizebox {\columnwidth} {!} {
+%\begin{tikzpicture}
+%\begin{axis}[
+%width=7cm, height=5cm,
+%xlabel=Number of epochs,
+%ylabel=Training loss,
+%yticklabel style={
+%	/pgf/number format/fixed,
+%	/pgf/number format/precision=5
+%},
+%ymode=log,
+%ymax=1,
+%ymin=0.001,
+%xmin=-1,
+%axis lines=left
+%]
+%\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_gisette3}; \label{gisette3_CPU12}
+%\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_gisette3}; \label{gisette3_Q112}
+%\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=3] {Data/new_gisette3}; \label{gisette3_CPU15}
+%\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=4] {Data/new_gisette3}; \label{gisette3_Q115}
+%\node [
+%fill=white,
+%font=\tiny,
+%anchor=north east
+%] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+%\ref{gisette3_CPU12} \textit{float}, step size=$1/2^{12}$, \ref{gisette3_Q112} \textit{Q1}, step size=$1/2^{12}$\\
+%\ref{gisette3_CPU15} \textit{float}, step size=$1/2^{15}$, \ref{gisette3_Q115} \textit{Q1}, step size=$1/2^{15}$
+%}};
+%\end{axis}
+%\end{tikzpicture}
+%}
+%\caption{SGD on \textit{gisette}, effect of step size for quantized data.}
+%\label{figure:gisette3}
+%\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymode=log,
+ymax=1000,
+ymin=0.03,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon3}; \label{epsilon3_CPU12}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_epsilon3}; \label{epsilon3_Q112}
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=3] {Data/new_epsilon3}; \label{epsilon3_CPU15}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=4] {Data/new_epsilon3}; \label{epsilon3_Q115}
+\addplot [color=black, dotted, line width=1pt] table [x index=0, y index=5] {Data/new_epsilon3}; \label{epsilon3_CPU18}
+\addplot [color=red, dotted, line width=1pt] table [x index=0, y index=6] {Data/new_epsilon3}; \label{epsilon3_Q118}
+\node [
+fill=white,
+font=\tiny,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{epsilon3_CPU12} \textit{float}, $\gamma=1/2^{12}$, \ref{epsilon3_Q112} \textit{Q1}, $\gamma=1/2^{12}$\\
+\ref{epsilon3_CPU15} \textit{float}, $\gamma=1/2^{15}$, \ref{epsilon3_Q115} \textit{Q1}, $\gamma=1/2^{15}$\\
+\ref{epsilon3_CPU18} \textit{float}, $\gamma=1/2^{18}$, \ref{epsilon3_Q118} \textit{Q1}, $\gamma=1/2^{18}$
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{epsilon}.}
+\label{figure:epsilon3}
+\end{subfigure}
+\caption{SGD on high dimensional, high variance data sets, showing the effect of the step size. The smaller the step size, the closer the convergence quality of low precision data to full precision data.}
+\label{figure:stepsize}
+\end{figure*}

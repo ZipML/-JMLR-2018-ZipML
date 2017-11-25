@@ -1,0 +1,137 @@
+\begin{figure*}[h!]
+\centering
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymode=log,
+%ymax=1000,
+ymin=0,
+%xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic1004}; \label{synthetic1004_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic1004}; \label{synthetic1004_Q2_64}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic1004}; \label{synthetic1004_Q2_32}
+\addplot [color=green, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic1004}; \label{synthetic1004_Q2_16}
+\addplot [color=cyan, line width=1pt] table [x index=0, y index=5] {Data/new_synthetic1004}; \label{synthetic1004_Q2_8}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=6] {Data/new_synthetic1004}; \label{synthetic1004_Q2_4}
+\addplot [color=blue, dashed, line width=1pt] table [x index=0, y index=7] {Data/new_synthetic1004}; \label{synthetic1004_Q2_2}
+\node [
+fill=white,
+font=\tiny,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{synthetic1004_SW} \textit{float} \\
+\ref{synthetic1004_Q2_64} \textit{Q2}, 64 indexes\\
+\ref{synthetic1004_Q2_32} \textit{Q2}, 32 indexes\\
+\ref{synthetic1004_Q2_16} \textit{Q2}, 16 indexes\\
+\ref{synthetic1004_Q2_8} \textit{Q2}, 8 indexes\\
+\ref{synthetic1004_Q2_4} \textit{Q2}, 4 indexes\\
+\ref{synthetic1004_Q2_2} \textit{Q2}, 2 indexes
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{synthetic100}.}
+\label{figure:synthetic1004}
+\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymode=log,
+%ymax=1000,
+ymin=0.005,
+%xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_gisette4}; \label{gisette4_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_gisette4}; \label{gisette4_Q2_64}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=3] {Data/new_gisette4}; \label{gisette4_Q2_32}
+\addplot [color=green, line width=1pt] table [x index=0, y index=4] {Data/new_gisette4}; \label{gisette4_Q2_16}
+\addplot [color=cyan, line width=1pt] table [x index=0, y index=5] {Data/new_gisette4}; \label{gisette4_Q2_8}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=6] {Data/new_gisette4}; \label{gisette4_Q2_4}
+\addplot [color=blue, dashed, line width=1pt] table [x index=0, y index=7] {Data/new_gisette4}; \label{gisette4_Q2_2}
+\node [
+fill=white,
+font=\tiny,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{gisette4_SW} \textit{float} \\
+\ref{gisette4_Q2_64} \textit{Q2}, 64 indexes\\
+\ref{gisette4_Q2_32} \textit{Q2}, 32 indexes\\
+\ref{gisette4_Q2_16} \textit{Q2}, 16 indexes\\
+\ref{gisette4_Q2_8} \textit{Q2}, 8 indexes\\
+\ref{gisette4_Q2_4} \textit{Q2}, 4 indexes\\
+\ref{gisette4_Q2_2} \textit{Q2}, 2 indexes
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{gisette}.}
+\label{figure:gisette4}
+\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymode=log,
+ymax=0.8,
+ymin=0.03,
+%xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon4}; \label{epsilon4_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_epsilon4}; \label{epsilon4_Q2_64}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=3] {Data/new_epsilon4}; \label{epsilon4_Q2_32}
+\addplot [color=green, line width=1pt] table [x index=0, y index=4] {Data/new_epsilon4}; \label{epsilon4_Q2_16}
+\addplot [color=cyan, line width=1pt] table [x index=0, y index=5] {Data/new_epsilon4}; \label{epsilon4_Q2_8}
+\addplot [color=red, line width=1pt] table [x index=0, y index=6] {Data/new_epsilon4}; \label{epsilon4_Q2_4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=7] {Data/new_epsilon4}; \label{epsilon4_Q2_2}
+\node [
+fill=white,
+font=\tiny,
+anchor=north west
+] at (rel axis cs: 0.01,0.99) {\shortstack[l]{
+\ref{epsilon4_SW} \textit{float} \\
+\ref{epsilon4_Q2_64} \textit{Q2}, 64 indexes\\
+\ref{epsilon4_Q2_32} \textit{Q2}, 32 indexes\\
+\ref{epsilon4_Q2_16} \textit{Q2}, 16 indexes\\
+\ref{epsilon4_Q2_8} \textit{Q2}, 8 indexes\\
+\ref{epsilon4_Q2_4} \textit{Q2}, 4 indexes\\
+\ref{epsilon4_Q2_2} \textit{Q2}, 2 indexes
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{epsilon}.}
+\label{figure:epsilon4}
+\end{subfigure}
+\caption{Effect of using less indexes than the number of performed epochs. More than 16 indexes is usually enough to get the same convergence quality.}
+\label{figure:indexes}
+\end{figure*}

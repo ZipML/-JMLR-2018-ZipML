@@ -1,0 +1,128 @@
+\begin{figure*}[h!]
+\centering
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymax=0.001,
+ymin=0,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic1002}; \label{syn1002_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic1002}; \label{syn1002_Q2}
+\addplot [color=green, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic1002}; \label{syn1002_Q4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic1002}; \label{syn1002_Q8}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{syn1002_SW} \textit{float}\\
+%CPU runtime: 2.86s, FPGA runtime: 0.677s\\
+\ref{syn1002_Q2} \textit{Q2}\\
+%FPGA runtime: 0.0967s\\
+\ref{syn1002_Q4} \textit{Q4}\\
+%FPGA runtime: 0.186s\\
+\ref{syn1002_Q8} \textit{Q8} %\\
+%FPGA runtime: 0.36s
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{synthetic100}. $\gamma=1/2^{9}$.}
+\label{figure:syn1002}
+\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymax=0.001,
+ymin=-0.01,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic10002}; \label{syn10002_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic10002}; \label{syn10002_Q2}
+\addplot [color=green, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic10002}; \label{syn10002_Q4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic10002}; \label{syn10002_Q8}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north west
+] at (rel axis cs: 0.01,0.99) {\shortstack[l]{
+\ref{syn10002_SW} \textit{float}\\
+%CPU runtime: 2.86s, FPGA runtime: 0.677s\\
+\ref{syn10002_Q2} \textit{Q2}\\
+%FPGA runtime: 0.0967s\\
+\ref{syn10002_Q4} \textit{Q4}\\
+%FPGA runtime: 0.186s\\
+\ref{syn10002_Q8} \textit{Q8} %\\
+%FPGA runtime: 0.36s
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{synthetic1000}. $\gamma=1/2^{9}$.}
+\label{figure:syn10002}
+\end{subfigure}
+\begin{subfigure}[t]{.66\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymax=0.001,
+ymin=0,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon2}; \label{epsilon2_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_epsilon2}; \label{epsilon2_Q2}
+\addplot [color=green, line width=1pt] table [x index=0, y index=3] {Data/new_epsilon2}; \label{epsilon2_Q4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=4] {Data/new_epsilon2}; \label{epsilon2_Q8}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north west
+] at (rel axis cs: 0.01,0.99) {\shortstack[l]{
+\ref{epsilon2_SW} \textit{float}\\
+%CPU runtime: 2.86s, FPGA runtime: 0.677s\\
+\ref{epsilon2_Q2} \textit{Q2}\\
+%FPGA runtime: 0.0967s\\
+\ref{epsilon2_Q4} \textit{Q4}\\
+%FPGA runtime: 0.186s\\
+\ref{epsilon2_Q8} \textit{Q8} %\\
+%FPGA runtime: 0.36s
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{SGD on \textit{epsilon}. $\gamma=1/2^{12}$.}
+\label{figure:epsilon2}
+\end{subfigure}
+\caption{SGD on high dimensional, high variance data sets, showing the effect of higher precision quantization to reach the same convergence quality as with full precision data.}
+\label{figure:precision}
+\end{figure*}

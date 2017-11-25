@@ -1,0 +1,181 @@
+\begin{figure*}[b]
+\centering
+\begin{subfigure}[t]{0.6\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Time (s),
+ylabel=Training loss,
+xmode=log,
+xmax=60,
+%ymode=log,
+%ymax=0.007,
+ymin=0.002,
+xticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+axis lines=left
+]
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=1] {Data/new_gisette1};\label{gisette1_SW1}
+\addplot [color=gray, line width=1pt] table [x index=2, y index=3] {Data/new_gisette1};\label{gisette1_SW10}
+\addplot [color=red, line width=0.7pt] table [x index=4, y index=5] {Data/new_gisette1};\label{gisette1_Q2}
+\addplot [color=blue, line width=1pt] table [x index=6, y index=7] {Data/new_gisette1};\label{gisette1_HW}
+
+%\node(source) at (rel axis cs: 0,0.15){};
+%\node(destination) at (rel axis cs: 1,0.15){};
+%\draw[-, color=black, line width=0.7pt](source)--(destination);
+
+\node(source) at (rel axis cs: 0.39,0.10){};
+\node(destination) at (rel axis cs: 0.62,0.10){};
+\draw[<-, color=red, line width=0.7pt](source)--(destination)
+node [pos=0.95,right]{6.5x};
+
+%\node(source) at (rel axis cs: 0.57,0.04){};
+%\node(destination) at (rel axis cs: 0.82,0.04){};
+%\draw[<-, color=blue, line width=0.7pt](source)--(destination)
+%node [pos=0.95,right,font=\scriptsize]{7.15x};
+
+\node [
+fill=white,
+font=\scriptsize,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{gisette1_SW1} \textit{float} CPU 1-thread\\
+\ref{gisette1_SW10} \textit{float} CPU 10-threads\\
+\ref{gisette1_HW} \textit{float} FPGA\\
+\ref{gisette1_Q2} \textit{Q2} FPGA
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{\textit{gisette}. $\gamma=1/2^{12}$.}
+\label{figure:gisette1}
+\end{subfigure}
+\begin{subfigure}[t]{0.6\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Time (s),
+ylabel=Training loss,
+xmode=log,
+xmax=8,
+%xmin=-0.1,
+%ymode=log,
+%ymax=0.007,
+ymin=0.036,
+xticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+axis lines=left
+]
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon1};\label{epsilon1_SW1}
+\addplot [color=gray, line width=1pt] table [x index=2, y index=3] {Data/new_epsilon1};\label{epsilon1_SW10}
+\addplot [color=red, line width=0.7pt] table [x index=4, y index=5] {Data/new_epsilon1};\label{epsilon1_Q8}
+\addplot [color=blue, line width=1pt] table [x index=6, y index=7] {Data/new_epsilon1};\label{epsilon1_HW}
+
+%\node(source) at (rel axis cs: 0,0.15){};
+%\node(destination) at (rel axis cs: 1,0.15){};
+%\draw[-, color=black, line width=0.7pt](source)--(destination);
+
+\node(source) at (rel axis cs: 0.55,0.10){};
+\node(destination) at (rel axis cs: 0.77,0.10){};
+\draw[<-, color=red, line width=0.7pt](source)--(destination)
+node [pos=0.95,right]{3.6x};
+
+%\node(source) at (rel axis cs: 0.63,0.04){};
+%\node(destination) at (rel axis cs: 0.89,0.04){};
+%\draw[<-, color=blue, line width=0.7pt](source)--(destination)
+%node [pos=0.95,right,font=\scriptsize]{4.35x};
+
+\node [
+fill=white,
+font=\scriptsize,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{epsilon1_SW1} \textit{float} CPU 1-thread\\
+\ref{epsilon1_SW10} \textit{float} CPU 10-threads\\
+\ref{epsilon1_HW} \textit{float} FPGA\\
+\ref{epsilon1_Q8} \textit{Q8} FPGA
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{\textit{epsilon}. $\gamma=1/2^{12}$.}
+\label{figure:epsilon1}
+\end{subfigure}
+\begin{subfigure}[t]{0.6\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Time (s),
+ylabel=Training loss,
+xmode=log,
+xmax=60,
+%ymode=log,
+ymax=0.022,
+ymin=0.0164,
+xticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+axis lines=left
+]
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=1] {Data/new_mnist71};\label{mnist71_SW1}
+\addplot [color=gray, line width=1pt] table [x index=2, y index=3] {Data/new_mnist71};\label{mnist71_SW10}
+\addplot [color=red, line width=0.7pt] table [x index=4, y index=5] {Data/new_mnist71};\label{mnist71_Q1}
+\addplot [color=blue, line width=1pt] table [x index=6, y index=7] {Data/new_mnist71};\label{mnist71_HW}
+
+%\node(source) at (rel axis cs: 0,0.15){};
+%\node(destination) at (rel axis cs: 1,0.15){};
+%\draw[-, color=black, line width=0.7pt](source)--(destination);
+
+\node(source) at (rel axis cs: 0.39,0.10){};
+\node(destination) at (rel axis cs: 0.67,0.10){};
+\draw[<-, color=red, line width=0.7pt](source)--(destination)
+node [pos=0.95,right]{10.6x};
+
+%\node(source) at (rel axis cs: 0.62,0.04){};
+%\node(destination) at (rel axis cs: 0.86,0.04){};
+%\draw[<-, color=blue, line width=0.7pt](source)--(destination)
+%node [pos=0.95,right,font=\scriptsize]{6.93x};
+
+\node [
+fill=white,
+font=\scriptsize,
+anchor=north east
+] at (rel axis cs: 0.99,0.99) {\shortstack[l]{
+\ref{mnist71_SW1} \textit{float} CPU 1-thread\\
+\ref{mnist71_SW10} \textit{float} CPU 10-thread\\
+\ref{mnist71_HW} \textit{float} FPGA\\
+\ref{mnist71_Q1} \textit{Q1} FPGA
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{\textit{mnist}, trained for digit 7. $\gamma=1/2^{15}$.}
+\label{figure:mnist71}
+\end{subfigure}
+\caption{SGD on classification data. All curves represent 64 SGD epochs.
+Speedup shown for \textit{Qx} FPGA vs. \textit{float} CPU 10-threads.}
+\label{figure:classification}
+\end{figure*}

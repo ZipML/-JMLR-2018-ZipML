@@ -1,0 +1,171 @@
+\begin{figure*}[b]
+\centering
+\begin{subfigure}[b]{0.5\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymax=0.001,
+ymin=0,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon2}; \label{epsilonP_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_epsilon2}; \label{epsilonP_Q2}
+\addplot [color=green, line width=1pt] table [x index=0, y index=3] {Data/new_epsilon2}; \label{epsilonP_Q4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=4] {Data/new_epsilon2}; \label{epsilonP_Q8}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north west
+] at (rel axis cs: 0.01,0.99) {\shortstack[l]{
+\ref{epsilonP_SW} \textit{float}\\
+%CPU runtime: 2.86s, FPGA runtime: 0.677s\\
+\ref{epsilonP_Q2} \textit{Q2}\\
+%FPGA runtime: 0.0967s\\
+\ref{epsilonP_Q4} \textit{Q4}\\
+%FPGA runtime: 0.186s\\
+\ref{epsilonP_Q8} \textit{Q8} %\\
+%FPGA runtime: 0.36s
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Effect of different precision quantization on \textit{epsilon}. $\gamma=1/2^{12}$.}
+\label{figure:epsilonP}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymode=log,
+ymax=0.14,
+ymin=0.001,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic1003}; \label{syn100S_CPU9}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic1003}; \label{syn100S_Q29}
+\addplot [color=black, dashed, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic1003}; \label{syn100S_CPU12}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic1003}; \label{syn100S_Q212}
+\addplot [color=black, dotted, line width=1pt] table [x index=0, y index=5] {Data/new_synthetic1003}; \label{syn100S_CPU15}
+\addplot [color=red, dotted, line width=1pt] table [x index=0, y index=6] {Data/new_synthetic1003}; \label{syn100S_Q215}
+
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north east
+] at (rel axis cs: 1.08,0.99) {\shortstack[l]{
+\ref{syn100S_CPU9} \textit{float}, $\gamma=1/2^9$, \ref{syn100S_Q29} \textit{Q2}, $\gamma=1/2^9$\\
+\ref{syn100S_CPU12} \textit{float}, $\gamma=1/2^{12}$, \ref{syn100S_Q212} \textit{Q2}, $\gamma=1/2^{12}$\\
+\ref{syn100S_CPU12} \textit{float}, $\gamma=1/2^{15}$, \ref{syn100S_Q212} \textit{Q2}, $\gamma=1/2^{15}$
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Effect of decreasing the step size on \textit{Q2} with \textit{synthetic100}.}
+\label{figure:syn100S}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+%ymode=log,
+%ymax=1000,
+ymin=0,
+%xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_synthetic1004}; \label{synthetic100I_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_synthetic1004}; \label{synthetic100I_Q2_64}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=3] {Data/new_synthetic1004}; \label{synthetic100I_Q2_32}
+\addplot [color=green, line width=1pt] table [x index=0, y index=4] {Data/new_synthetic1004}; \label{synthetic100I_Q2_16}
+\addplot [color=cyan, line width=1pt] table [x index=0, y index=5] {Data/new_synthetic1004}; \label{synthetic100I_Q2_8}
+\addplot [color=red, dashed, line width=1pt] table [x index=0, y index=6] {Data/new_synthetic1004}; \label{synthetic100I_Q2_4}
+\addplot [color=blue, dashed, line width=1pt] table [x index=0, y index=7] {Data/new_synthetic1004}; \label{synthetic100I_Q2_2}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north east
+] at (rel axis cs: 1.02,0.99) {\shortstack[l]{
+\ref{synthetic100I_SW} \textit{float} \\
+\ref{synthetic100I_Q2_64} \textit{Q2}, 64 indexes, 
+\ref{synthetic100I_Q2_32} \textit{Q2}, 32 indexes\\
+\ref{synthetic100I_Q2_16} \textit{Q2}, 16 indexes,
+\ref{synthetic100I_Q2_8} \textit{Q2}, 8 indexes\\
+\ref{synthetic100I_Q2_4} \textit{Q2}, 4 indexes,
+\ref{synthetic100I_Q2_2} \textit{Q2}, 2 indexes
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Effect of reusing indexes with \textit{synthetic100}.}
+\label{figure:synthetic100I}
+\end{subfigure}
+\begin{subfigure}[b]{0.5\columnwidth}
+\centering
+\resizebox {\columnwidth} {!} {
+\begin{tikzpicture}
+\begin{axis}[
+width=7cm, height=5cm,
+xlabel=Number of epochs,
+ylabel=Training loss,
+yticklabel style={
+	/pgf/number format/fixed,
+	/pgf/number format/precision=5
+},
+ymax=0.3,
+ymin=0.04,
+xmin=-1,
+axis lines=left
+]
+\addplot [color=black, line width=1pt] table [x index=0, y index=1] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_SW}
+\addplot [color=red, line width=1pt] table [x index=0, y index=2] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_Q2}
+\addplot [color=green, line width=1pt] table [x index=0, y index=3] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_Q4}
+\addplot [color=blue, line width=1pt] table [x index=0, y index=4] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_Q8}
+\addplot [color=red!70!black, dashed, line width=1pt] table [x index=0, y index=5] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_F2}
+\addplot [color=green!70!black, dashed, line width=1pt] table [x index=0, y index=6] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_F4}
+\addplot [color=blue!70!black, dashed, line width=1pt] table [x index=0, y index=7] {Data/new_epsilon_effect_of_Q}; \label{epsilon5_F8}
+\node [
+fill=white,
+font=\footnotesize,
+anchor=north west
+] at (rel axis cs: 0.01,0.99) {\shortstack[l]{
+\ref{epsilon5_SW} \textit{float}\\
+\ref{epsilon5_Q2} \textit{Q2}, \ref{epsilon5_F2} \textit{F2}\\
+\ref{epsilon5_Q4} \textit{Q4}, \ref{epsilon5_F4} \textit{F4}\\
+\ref{epsilon5_Q8} \textit{Q8}, \ref{epsilon5_F8} \textit{F8} %\\
+}};
+\end{axis}
+\end{tikzpicture}
+}
+\caption{Naive rounding vs. stochastic quantization}
+\label{figure:naive}
+\end{subfigure}
+\caption{SGD on various data sets, showing the effects of data precision, step size $\gamma$, index reuse, and naive rounding.}
+\label{figure:effects}
+\vspace{-1em}
+\end{figure*}
